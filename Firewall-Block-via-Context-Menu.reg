@@ -1,0 +1,85 @@
+﻿Windows Registry Editor Version 5.00
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall]
+
+@=""
+
+"MUIVerb"="Windows Defender Firewall"
+
+"icon"="%SYSTEMROOT%\\system32\\FirewallControlPanel.dll,0"
+
+"subcommands"=""
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell]
+
+@=""
+
+
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\BlockInbound]
+
+@=""
+
+"MUIVerb"="Block Inbound"
+
+"icon"="%SYSTEMROOT%\\system32\\FirewallControlPanel.dll,1"
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\BlockInbound\command]
+
+@="powershell -Executionpolicy ByPass -WindowStyle Hidden -NoLogo -Command \"start powershell -Verb runas -ArgumentList \\\"-NoLogo -WindowStyle Hidden -command `\\\"New-NetFirewallRule -DisplayName ([System.IO.Path]::GetFilenameWithoutExtension('%1')) -Name '%1 IN' -Enabled True -Direction inbound -Action Block -Program '%1'`\\\"\\\"\""
+
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\BlockOutbound]
+
+@=""
+
+"MUIVerb"="Block Outbound"
+
+"icon"="%SYSTEMROOT%\\system32\\FirewallControlPanel.dll,1"
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\BlockOutbound\command]
+
+@="powershell -Executionpolicy ByPass -WindowStyle Hidden -NoLogo -Command \"start powershell -Verb runas -ArgumentList \\\"-NoLogo -WindowStyle Hidden -command `\\\"New-NetFirewallRule -DisplayName ([System.IO.Path]::GetFilenameWithoutExtension('%1')) -Name '%1' -Enabled True -Direction Outbound -Action Block -Program '%1'`\\\"\\\"\""
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\BlockIn&Out]
+
+@=""
+
+"MUIVerb"="Block In-Out"
+
+"icon"="%SYSTEMROOT%\\system32\\FirewallControlPanel.dll,1"
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\BlockIn&Out\command]
+
+@="powershell -Executionpolicy ByPass -WindowStyle Hidden -NoLogo -Command \"start powershell -Verb runas -ArgumentList \\\"-NoLogo -WindowStyle Hidden -command `\\\"New-NetFirewallRule -DisplayName ([System.IO.Path]::GetFilenameWithoutExtension('%1')) -Name '%1 OUT' -Enabled True -Direction inbound -Action Block -Program '%1';New-NetFirewallRule -DisplayName ([System.IO.Path]::GetFilenameWithoutExtension('%1')) -Name '%1 IN' -Enabled True -Direction outbound -Action Block -Program '%1'`\\\"\\\"\""
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\Remove]
+
+@=""
+
+"MUIVerb"="Remove Rules"
+
+"icon"="%SYSTEMROOT%\\System32\\SHELL32.dll,295"
+
+
+
+[HKEY_CLASSES_ROOT\exefile\shell\Firewall\shell\Remove\command]
+
+@="powershell -Executionpolicy ByPass -WindowStyle Hidden -NoLogo -Command \"start powershell -Verb runas -ArgumentList \\\"-NoLogo -WindowStyle Hidden -command `\\\"Remove-NetFirewallRule -Name '%1 OUT';Remove-NetFirewallRule -Name '%1 IN'`\\\"\\\"\""
