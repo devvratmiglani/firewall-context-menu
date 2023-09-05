@@ -16,7 +16,7 @@ It does nothing but provide convenience, some additional clicks to add a firewal
 [![instagram](https://img.shields.io/badge/Instagram-%20-ff69b7?style=for-the-badge&logo=instagram)](https://www.instagram.com/devvratmiglani/)
 
 
-## Operations:
+## Operations
 Block In-Out: Blocks Inbound and Outbound data to that program
 
 Block Inbound: Blocks Inbound data to that program
